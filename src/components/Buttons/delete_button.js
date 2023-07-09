@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import './button.css'
 
 const DeleteFile = ({fileName, token}) => {
 
@@ -9,7 +10,6 @@ const DeleteFile = ({fileName, token}) => {
     }
 
     async function handleDelete(){
-        alert(fileName)
         axios.delete('https://bgt8168cpa.execute-api.eu-north-1.amazonaws.com/dev/files',{data: payload}
         )
         .then((response) => {

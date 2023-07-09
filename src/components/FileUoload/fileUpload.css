@@ -1,0 +1,74 @@
+.upload_container{
+    /* border: 1px solid white; */
+    margin-top: 40px !important;
+    width: 40%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.upload_container button{
+    background-color: green;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 3px;
+    padding: 3px 6px;
+}
+
+.upload_container button:hover{
+    color: green;
+    background-color: white;
+}
+
+.upload_top{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.upload_top svg{
+    cursor: pointer;
+}
+
+.upload_container form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+/* upload preview area */
+.upload_preview{
+    position: absolute;
+    top: 65px;
+    left: 300px;
+    width: 60vw;
+    height: 60vh;
+    background-color: black;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 6px;
+}
+.upload_preview .cancel{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 45px;
+    right: 20px;
+    cursor: pointer;
+    color: red;
+}
+
+.upload_preview svg{
+    width: 100px;
+    height: 100px;
+}

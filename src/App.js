@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import FileUpload from './file-upload';
-import SessionTimeout from './sessionTimeout';
+import FileUpload from './components/FileUoload/file-upload';
+import SessionTimeout from './components/Session/sessionTimeout';
 import { Amplify, Auth } from 'aws-amplify';
 import "@aws-amplify/ui-react/styles.css";
-import MyContext from './myContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import DeleteFile from './delete_button'
+import DeleteFile from './components/Buttons/delete_button'
 import { Button, Col, Container, Form, Row, Table } from 'react-bootstrap';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import Config from './aws-exports'
+import './App.css'
+import { Description } from '@mui/icons-material';
 Amplify.configure(Config)
 
 
@@ -83,38 +84,30 @@ const App = () => {
   return (
    
       <div className='App'>
-        <h1>My App</h1>
+        <h1>DropBox App</h1>
         <SessionTimeout timeoutDuration={sessionTimeoutDuration} />
         <FileUpload token={token}/><br />
         {filesDetails.length? (
-          <Row className="my-2">
-              <Col>
-                <Table striped bordered hover>
-                  <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Files</th>
-                    </tr>
-                  </thead>
-                  <tbody>               
+          <div className="main_container">
+              <div className='col_container'>
                     {/* Render content when filesDetails has items */}
                     {filesDetails.map((file, index) => (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td><a href= {file.url}>{file.file}</a></td>
-                        <td><DeleteFile fileName={file.file} token={token} /></td>
-                      </tr>
+                      <div className='file_item' key={index}>
+                        <p>{index + 1}</p>
+                        <Description/>
+                        <p className='text_description'><a href= {file.url}>
+                          {file.file}</a></p>
+                        <p><DeleteFile fileName={file.file} token={token} /></p>
+                      </div>
                     ))}
-                  </tbody>
-                </Table>
-              </Col>
-            </Row>        
+                  </div>
+            </div>        
         ) : (
           <p>No files available</p>
         )}
 
         {user && (
-          <button onClick={handleSignOut} className="float-right">
+          <button className='signOut' onClick={handleSignOut} className="float-right">
             Sign Out
           </button>
         )

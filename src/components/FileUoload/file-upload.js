@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import './fileUpload.css'
 
 const FileUpload = ({token, reload}) => {
 
@@ -50,10 +51,12 @@ const FileUpload = ({token, reload}) => {
 
 
   return (
-    <div>
+    <div className='upload_container'>
       <h2>File Upload</h2>
+      <div className='upload_top'>
       <input type="file" onChange={handleFileChange} />
       <button onClick={handleUpload}>Upload</button>
+      </div>
     </div>
   );
 };
